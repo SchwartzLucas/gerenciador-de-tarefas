@@ -1,4 +1,4 @@
-package schwartz.domain;
+package web.domain;
 
 import lombok.Getter;
 import lombok.Setter;

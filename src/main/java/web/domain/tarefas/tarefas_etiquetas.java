@@ -1,4 +1,4 @@
-package schwartz.domain.tarefas;
+package web.domain.tarefas;
 
 import lombok.Getter;
 import lombok.Setter;

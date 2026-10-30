@@ -1,4 +1,4 @@
-package schwartz.domain;
+package web.domain;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,12 +9,10 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @ToString
-public class refresh_tokens {
-
+public class etiquetas {
     private Long id;
     private Long usuario_id;
-    private String token_hash;
-    private LocalDateTime expira_em;
-    private LocalDateTime revogado_em;
+    private String nome;
+    private String cor;
     private LocalDateTime criado_em;
 }
