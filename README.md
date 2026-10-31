@@ -116,7 +116,7 @@ O schema é criado pelas migrations em `backend/src/main/resources/db/migration/
 | `usuarios` | Contas de usuário (senha somente como hash) |
 | `refresh_tokens` | Refresh tokens, guardados como hash, com revogação |
 | `status` | Colunas do Kanban |
-| `tarefas` | Tarefas de cada usuário |
+| `Tarefa` | Tarefas de cada usuário |
 | `etiquetas` e `tarefa_etiquetas` | Etiquetas coloridas e sua ligação com as tarefas |
 | `lancamentos_tempo` | Lançamentos do cronômetro |
 | `historico_tarefas` | Histórico por campo de cada alteração |

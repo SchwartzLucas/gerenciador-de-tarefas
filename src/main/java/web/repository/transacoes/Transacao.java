@@ -1,4 +1,4 @@
-package web.repository;
+package web.repository.transacoes;
 
 import org.springframework.stereotype.Component;
 import web.Utils;

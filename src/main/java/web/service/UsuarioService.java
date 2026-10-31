@@ -1,13 +1,13 @@
 package web.service;
 
 import lombok.AllArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import web.controller.usuario.dto.UsuarioCriarRequestDTO;
+import web.controller.usuario.DTO.UsuarioCriarRequestDTO;
 import web.domain.Usuario;
-import web.Utils;
 import web.exceptions.ConflitoException;
-import web.repository.Transacao;
-import web.repository.usuario.UsuarioRepository;
+import web.repository.transacoes.Transacao;
+import web.repository.UsuarioRepository;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ public class UsuarioService {
     public Usuario criar(UsuarioCriarRequestDTO request) {
         final String nome = request.nome().trim();
         final String email = request.email().trim();
-        final String hash = enconder.encode(request.senha());
+        final String hash = encoder.encode(request.senha());
 
         return transacao.executar(conn -> {
             if(repository.existePorEmail(conn, email)){

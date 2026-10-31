@@ -1,4 +1,4 @@
-package web.repository;
+package web.repository.transacoes;
 
 import java.sql.Connection;
 import java.sql.SQLException;

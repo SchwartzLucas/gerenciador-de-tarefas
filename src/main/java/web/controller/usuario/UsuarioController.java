@@ -1,29 +1,25 @@
 package web.controller.usuario;
 
 import jakarta.validation.Valid;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import web.controller.usuario.dto.UsuarioCriarRequestDTO;
-import web.controller.usuario.dto.UsuarioCriarResponseDTO;
-import web.controller.usuario.dto.UsuarioListarResponseDTO;
+import web.controller.usuario.DTO.UsuarioCriarRequestDTO;
+import web.controller.usuario.DTO.UsuarioCriarResponseDTO;
+import web.controller.usuario.DTO.UsuarioListarResponseDTO;
 import web.domain.Usuario;
-import web.repository.Transacao;
 import web.service.Pesquisa;
 import web.service.UsuarioService;
 
 import java.util.List;
 
+@AllArgsConstructor
 @RestController
 @RequestMapping("/usuario")
 public class UsuarioController {
 
     private final UsuarioService service;
-    public UsuarioController(UsuarioService usuarioService){
-        this.service = usuarioService;
-    }
-
 
     @PostMapping("/criar")
     public ResponseEntity<UsuarioCriarResponseDTO> criar (@Valid @RequestBody UsuarioCriarRequestDTO request){
@@ -37,4 +33,6 @@ public class UsuarioController {
 
         return ResponseEntity.status(HttpStatus.OK).body(UsuarioListarResponseDTO.from(usuarioList));
     }
+
+
 }

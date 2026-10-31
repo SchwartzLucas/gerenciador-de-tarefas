@@ -1,4 +1,4 @@
-package web.repository.usuario;
+package web.repository;
 
 import org.springframework.stereotype.Repository;
 import web.Utils;
@@ -29,11 +29,10 @@ public class UsuarioRepository {
     }
 
     public Usuario inserir(Connection con, Usuario u) throws SQLException {
-        try (PreparedStatement ps = con.prepareStatement("insert into usuarios(nome, email, senha_hash, criado_em) values(?,?,?,?)")) {
+        try (PreparedStatement ps = con.prepareStatement("insert into usuarios(nome, email, senha_hash) values(?,?,?)")) {
             ps.setString(1, u.getNome());
             ps.setString(2, u.getEmail());
             ps.setString(3, u.getSenha_hash());
-            ps.setObject(4, LocalDateTime.now(ZoneOffset.UTC));
             ps.executeUpdate();
             try (ResultSet key = ps.getGeneratedKeys()) {
                 if (key.next()) {
@@ -60,8 +59,8 @@ public class UsuarioRepository {
                 from usuarios u
                 where 1=1
                 """);
-        if (!Utils.isEmpty(pesquisa.filtro())) {
-            for (Filtro filtro : pesquisa.filtro()) {
+        if (!Utils.isEmpty(pesquisa.filtros())) {
+            for (Filtro filtro : pesquisa.filtros()) {
                 switch (filtro.propriedade()) {
                     case "like" -> buf.append(" and u.nome like ? ");
                     case "email" -> buf.append(" and u.email = ? ");
@@ -93,9 +92,9 @@ public class UsuarioRepository {
             }
         }
         try (PreparedStatement ps = conn.prepareStatement(buf.toString())) {
-            if (!Utils.isEmpty(pesquisa.filtro())) {
+            if (!Utils.isEmpty(pesquisa.filtros())) {
                 int i = 1;
-                for (Filtro filtro : pesquisa.filtro()) {
+                for (Filtro filtro : pesquisa.filtros()) {
                     switch (filtro.propriedade()) {
                         case "like" -> {
                             if (filtro.valor() instanceof String v) {

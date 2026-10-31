@@ -1,16 +1,17 @@
 package web.domain.tarefas;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
 @Getter
 @Setter
 @ToString
-public class tarefas {
+@NoArgsConstructor
+@AllArgsConstructor
+public class Tarefa {
     private Long id;
     private Long usuario_id;
     private Long status_id;
@@ -24,4 +25,7 @@ public class tarefas {
     private LocalDateTime inativada_em;
     private LocalDateTime criado_em;
     private LocalDateTime atualizado_em;
+
+    public Tarefa(String titulo, String descricao, LocalDate prazo, Integer esforcoEstimadoMin) {
+    }
 }

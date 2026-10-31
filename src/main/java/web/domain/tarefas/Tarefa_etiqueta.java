@@ -7,7 +7,7 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class tarefas_etiquetas {
+public class Tarefa_etiqueta {
     private Long tarega_id;
     private Long etiqueta_id;
     private Long usuario_id;
