@@ -12,6 +12,8 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Tarefa {
+    public final static Byte ATIVA = 1;
+    public final static Byte INATIVA = 0;
     private Long id;
     private Long usuario_id;
     private Long status_id;
@@ -19,7 +21,7 @@ public class Tarefa {
     private String descricao;
     private Prioridade prioridade;
     private Date prazo;
-    private Integer esforfo_estimado_min;
+    private Integer esforco_estimado_min;
     private Integer posicao;
     private Byte ativa;
     private LocalDateTime inativada_em;

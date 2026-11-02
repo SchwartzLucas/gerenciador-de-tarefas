@@ -30,7 +30,6 @@ public class UsuarioController {
     @GetMapping("/listar")
     public ResponseEntity<List<UsuarioListarResponseDTO>> listar (Pesquisa pesquisa){
         List<Usuario> usuarioList = service.listar(pesquisa);
-
         return ResponseEntity.status(HttpStatus.OK).body(UsuarioListarResponseDTO.from(usuarioList));
     }
 
